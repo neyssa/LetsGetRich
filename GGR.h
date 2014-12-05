@@ -25,44 +25,41 @@ typedef struct {
 } ListScore;
 
 void StartRead(char FileName[30]);
-/*I.S. : CC, sebuah Nama dalam file NamaFile, sembarang */
+/*I.S. : CC, sebuah Nama dalam file  */
 /*F.S. : End of Process = true*/
-/*CC adalah Nama pertama dalam NamaFile*/
+/*CC adalah Nama pertama di dalam file*/
 
 void StartWrite(char FileName[30]);
 /*I.S. : sembarang */
-/*F.S. : File eksternal bernama 'NamaFile' siap untuk ditulis*/
+/*F.S. : File eksternal siap untuk ditulis*/
 
 void NextName();
 /*I.S. : CC adalah kata yang diakuisisi*/
 /*F.S. : CC mungkin mark*/
 
 boolean IsKataSama(char Name1[10], char Name2[10]);
-/* Mengembalikan true jika K1 = K2; dua kata dikatakan sama
- jika panjangnya sama dan urutan karakter yang menyusun kata juga sama */
+/* Mengembalikan true jika Name1 sama dengan Name2; dua kata dikatakan sama
+CountNamenya sama dan huruf yang menyusunnya sama */
 
 void WriteFile(char FileName[30], ListName LN);
 /*I.S. : sembarang*/
-/*F.S. : Menulis kembali ListNama dalam file eksternal 'NamaFile'*/
+/*F.S. : Menulis kembali ListName dalam file eksternal */
 
 
 boolean IsNameValid(char Name[10]);
 /*Mengembalikan true jika Panjang Nama >= 3 karakter */
 
 boolean IsFileEmpty(ListName LN);
-/*Mengembalikan true jika File Eksternal dengan ListNama LN kosong */
+/*Mengembalikan true jika File Eksternal dengan ListName LN kosong */
 
 boolean IsTerdaftar(char Name[10], ListName LN);
-/*Mengembalikan true jika Nama ada di ListNama, dan false jika tidak*/
+/*Mengembalikan true jika Name ada di ListName, dan false jika tidak*/
 
 
 void SalinFile(char FileName[30], ListName *LN);
-/*I.S. : Sembarang*/
-/*F.S. : LN merupakan ListNama hasil copy dari file eksternal bernama 'NamaFile'*/
+/*I.S. : Sembarang */
+/*F.S. : LN merupakan ListName asil copy dari file eksternal */
 
-void DaftarPemain(char Name[10], ListName LN);
-/*I.S. : Nama terdefinisi*/
-/*F.S. : Menampilkan semua nama dalam LN yang bukan Nama*/
 
 #endif
 
