@@ -25,44 +25,40 @@ typedef struct {
 } ListScore;
 
 void StartRead(char FileName[30]);
-/*I.S. : CC, sebuah Nama dalam file NamaFile, sembarang */
+/*I.S. : sembarang */
 /*F.S. : End of Process = true*/
-/*CC adalah Nama pertama dalam NamaFile*/
+/*CC adalah Nama pertama dalam File eksternal*/
 
 void StartWrite(char FileName[30]);
 /*I.S. : sembarang */
-/*F.S. : File eksternal bernama 'NamaFile' siap untuk ditulis*/
+/*F.S. : File eksternal siap untuk ditulis*/
 
 void NextName();
 /*I.S. : CC adalah kata yang diakuisisi*/
 /*F.S. : CC mungkin mark*/
 
 boolean IsKataSama(char Name1[10], char Name2[10]);
-/* Mengembalikan true jika K1 = K2; dua kata dikatakan sama
- jika panjangnya sama dan urutan karakter yang menyusun kata juga sama */
+/* Mengembalikan true jika Name1 = Name2  */
 
 void WriteFile(char FileName[30], ListName LN);
 /*I.S. : sembarang*/
-/*F.S. : Menulis kembali ListNama dalam file eksternal 'NamaFile'*/
+/*F.S. : Menulis kembali ListName dalam file eksternal */
 
 
 boolean IsNameValid(char Name[10]);
-/*Mengembalikan true jika Panjang Nama >= 3 karakter */
+/*Mengembalikan true jika Panjang Nama lebih dari 3 karakter */
 
 boolean IsFileEmpty(ListName LN);
-/*Mengembalikan true jika File Eksternal dengan ListNama LN kosong */
+/*Mengembalikan true jika File Eksternal dengan ListName LN kosong */
 
 boolean IsTerdaftar(char Name[10], ListName LN);
-/*Mengembalikan true jika Nama ada di ListNama, dan false jika tidak*/
+/*Mengembalikan true jika Name ada di ListName, dan false jika tidak*/
 
 
 void SalinFile(char FileName[30], ListName *LN);
 /*I.S. : Sembarang*/
-/*F.S. : LN merupakan ListNama hasil copy dari file eksternal bernama 'NamaFile'*/
+/*F.S. : LN merupakan  hasil copy dari file eksternal bernama */
 
-void DaftarPemain(char Name[10], ListName LN);
-/*I.S. : Nama terdefinisi*/
-/*F.S. : Menampilkan semua nama dalam LN yang bukan Nama*/
 
 #endif
 
@@ -101,13 +97,45 @@ typedef struct{
 } Bangunan;
 
 void Boardpermainan (Queue Q, int l);
+/* Membuat board permainan Let's Get Rich */
+
 int NbElmt(Queue Q);
+/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
+
+
 boolean IsEmpty (Queue Q);
+/* Mengirim true jika Q kosong */
+
 boolean IsFull (Queue Q);
+/* Mengirim true jika tabel penampung elemen Q sudah penuh yaitu mengandung MaxEl
+elemen */
+
 void CreateEmpty (Queue *Q, int Max);
+/* I.S. Max terdefinisi */
+/* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb : */
+/* Jika alokasi berhasil, tabel memori dialokasi berukuran Max */
+/* atau : jika alokasi gagal, Q kosong dg Maksimum elemen=0 */
+/* Proses : Melakukan alokasi memori dan membuat sebuah Q kosong */
+
 void DeAlokasi (Queue *Q);
+/* Proses : Mengembalikan memori Q */
+/* I.S. Q pernah dialokasi */
+/* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
+
 void Add (Queue *Q, Pemain X);
+/* Proses : Menambahkan X pada Q dengan aturan FIFO */
+/* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
+/* F.S. X menjadi TAIL yang baru, TAIL "maju". */
+/* Jika TAIL baru = MaxEl + 1, maka TAIL diset = 1. */
+
 void Del (Queue *Q, Pemain *X);
+/* Proses : Menghapus elemen pertama pada Q dengan aturan FIFO */
+/* I.S. Q tidak kosong */
+/* F.S. X = nilai elemen HEAD pada I.S.,
+Jika Queue masih isi : HEAD "maju".
+Jika HEAD baru menjadi MaxEl + 1, maka HEAD diset = 1;
+Jika Queue menjadi kosong, HEAD = TAIL = Nil. */
+
 void PengisianBangunan (Bangunan *B);
 boolean EndGame(Queue Q, Bangunan B);
 void CreateQueuePemain (Queue *Q, int Maks);
